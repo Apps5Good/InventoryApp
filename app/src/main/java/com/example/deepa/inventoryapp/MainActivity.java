@@ -12,14 +12,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    public void readReceipt() {
-        InputStream is = getResources().openRawResource(R.raw.modelReceipt);
+   public void readReceipt() {
+        InputStream is = getResources().openRawResource(R.raw.modelreceipt);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line = "";
         ArrayList<Item> newReceipt = new ArrayList<>();
@@ -33,4 +34,6 @@ public class MainActivity extends AppCompatActivity {
             Log.wtf("ImageData", "ya dun messed up");
         }
     }
+
+    public void set
 }
