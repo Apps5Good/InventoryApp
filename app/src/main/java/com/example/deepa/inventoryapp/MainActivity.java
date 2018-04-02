@@ -1,8 +1,10 @@
 package com.example.deepa.inventoryapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +37,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
 
-    public void addItems() {
+    public void addItems(View v) {
+        Boolean status = true; //if true, it will add; if false, it will subtract
+        Intent addItems = new Intent (this, Camera.class);
+        addItems.putExtra("status", status);
 
+        startActivity(addItems);
+    }
+
+    public void subtractItems(View v) {
+        Boolean status = false;
+        Intent subtractItems = new Intent(this, Camera.class);
+        subtractItems.putExtra("status", status);
+
+        startActivity(subtractItems);
+    }
+
+    public void toInventory(View v) {
+        Intent accessInventory = new Intent(this,InventoryDisplay.class);
+
+        startActivity(accessInventory);
     }
 }
