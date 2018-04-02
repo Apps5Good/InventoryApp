@@ -10,24 +10,43 @@
         android:id="@+id/addItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Items"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="63dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="addItems"
+        android:text="@string/add_items"
+        app:layout_constraintBottom_toTopOf="@+id/removeItems"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
 
     <Button
         android:id="@+id/removeItems"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove Items"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="193dp" />
+        android:layout_width="126dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="addItems"
+        android:text="@string/remove_items"
+        app:layout_constraintEnd_toEndOf="@+id/addItem"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/addItem"
+        tools:layout_editor_absoluteY="198dp" />
 
     <Button
         android:id="@+id/accessInventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Access Inventory"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="328dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/access_inventory"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/removeItems"
+        app:layout_constraintStart_toStartOf="@+id/removeItems"
+        app:layout_constraintTop_toBottomOf="@+id/removeItems" />
 
 </android.support.constraint.ConstraintLayout>
