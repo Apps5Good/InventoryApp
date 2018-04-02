@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-   public void readReceipt() {
+  /* public void readReceipt() {
         InputStream is = getResources().openRawResource(R.raw.modelreceipt);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line = "";
@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         catch(IOException e) {
             Log.wtf("ImageData", "ya dun messed up");
         }
-    }
+    }*/
 
-    public void set
+    public void addItems() {
+
+    }
 }
