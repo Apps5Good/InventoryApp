@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     public void subtractItems(View v) {
         Boolean status = false;
         Intent subtractItems = new Intent(this, Camera.class);
-        subtractItems.putExtra("status", status);
+      subtractItems.putExtra("status", status);
 
         startActivity(subtractItems);
     }

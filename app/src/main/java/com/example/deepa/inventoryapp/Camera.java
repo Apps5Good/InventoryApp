@@ -9,6 +9,7 @@ public class Camera extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_camera);
 
         //starting activity and extracting data from the intent
         Bundle addOrSubtract = getIntent().getExtras();
@@ -21,6 +22,5 @@ public class Camera extends AppCompatActivity {
         else {
             answerBox.setText(R.string.test_remove);
         }
-
     }
 }
