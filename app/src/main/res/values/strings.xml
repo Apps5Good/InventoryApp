@@ -3,7 +3,7 @@
     <string name="app_name">InventoryApp</string>
     <string name="add_items">Add Items</string>
     <string name="remove_items">Remove Items</string>
-    <string name="access_inventory">Access Inventorys</string>
+    <string name="access_inventory">Access Inventory</string>
 
     //Camera Page
     <string name="test_add">Adding Items</string>
