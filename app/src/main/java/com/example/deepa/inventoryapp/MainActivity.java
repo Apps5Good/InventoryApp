@@ -39,23 +39,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void addItems(View v) {
         Boolean status = true; //if true, it will add; if false, it will subtract
-        Intent addItems = new Intent (this, Camera.class);
-        addItems.putExtra("status", status);
+        Intent intentAdd = new Intent (this, Camera.class);
+        intentAdd.putExtra("status", status);
 
-        startActivity(addItems);
+        startActivity(intentAdd);
     }
 
     public void subtractItems(View v) {
         Boolean status = false;
-        Intent subtractItems = new Intent(this, Camera.class);
-        subtractItems.putExtra("status", status);
+        Intent intentSubtract = new Intent(this, Camera.class);
+        intentSubtract.putExtra("status", status);
 
-        startActivity(subtractItems);
+        startActivity(intentSubtract);
     }
 
     public void toInventory(View v) {
-        Intent accessInventory = new Intent(this,InventoryDisplay.class);
+        Intent intentInventory = new Intent(this,InventoryDisplay.class);
 
-        startActivity(accessInventory);
+        startActivity(intentInventory);
     }
 }

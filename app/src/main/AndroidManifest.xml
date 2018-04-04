@@ -19,6 +19,8 @@
         <activity android:name=".Camera" />
         <activity android:name=".InventoryDisplay" />
         <activity android:name=".ListDisplay"></activity>
-    </application>
 
+   </application>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 </manifest>

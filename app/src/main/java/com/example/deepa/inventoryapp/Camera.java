@@ -35,16 +35,16 @@ public class Camera extends AppCompatActivity {
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent takePhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePhoto, 0);
+                Intent intentPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intentPhoto, 0);
             }
         });
     }
 
     public void takePicture(View v) {
-        Intent toListDisplay = new Intent(this, ListDisplay.class);
+        Intent intentListDisplay = new Intent(this, ListDisplay.class);
 
-        startActivity(toListDisplay);
+        startActivity(intentListDisplay);
     }
 
     @Override //accessing phone camera
