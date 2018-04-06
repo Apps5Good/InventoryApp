@@ -11,12 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Camera extends AppCompatActivity {
-    ImageView CameraPreview;
+    private ImageView preview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        preview = findViewById(R.id.photoPreview);
 
         //starting activity and extracting data from the intent
         Bundle addOrSubtract = getIntent().getExtras();
@@ -30,7 +31,6 @@ public class Camera extends AppCompatActivity {
             answerBox.setText(R.string.test_remove);
         }*/
         Button cameraButton = (Button)findViewById(R.id.cameraButton);
-        ImageView viewCamera = (ImageView)findViewById(R.id.CameraPreview);
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class Camera extends AppCompatActivity {
     @Override //accessing phone camera
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bitmap = (Bitmap)data.getExtras().get("data");
-        CameraPreview.setImageBitmap(bitmap);
+        Bitmap image = (Bitmap)data.getExtras().get("data");
+        preview.setImageBitmap(image);
     }
 }
