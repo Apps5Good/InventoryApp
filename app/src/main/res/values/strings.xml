@@ -7,6 +7,7 @@
 
     //Multiple Pages
     <string name="to_home">Home</string>
+    <string name="to_inventory">My Inventory</string>
 
     //Camera Page
     <string name="test_add">Adding Items</string>

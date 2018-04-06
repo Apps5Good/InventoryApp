@@ -53,4 +53,16 @@ public class Camera extends AppCompatActivity {
         Bitmap image = (Bitmap)data.getExtras().get("data");
         preview.setImageBitmap(image);
     }
+
+    public void toInventory(View v) {
+        Intent intentInventory = new Intent(this,InventoryDisplay.class);
+
+        startActivity(intentInventory);
+    }
+
+    public void toHome(View v) {
+        Intent intentHome = new Intent(this, MainActivity.class);
+
+        startActivity(intentHome);
+    }
 }
