@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Camera" />
-        <activity android:name=".InventoryDisplay"></activity>
+        <activity android:name=".InventoryDisplay" />
+        <activity android:name=".ListPreview"></activity>
     </application>
 
 </manifest>
