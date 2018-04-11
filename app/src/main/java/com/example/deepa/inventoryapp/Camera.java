@@ -41,12 +41,6 @@ public class Camera extends AppCompatActivity {
         });
     }
 
-    public void takePicture(View v) {
-        Intent intentListDisplay = new Intent(this, ListDisplay.class);
-
-        startActivity(intentListDisplay);
-    }
-
     @Override //accessing phone camera
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -64,5 +58,11 @@ public class Camera extends AppCompatActivity {
         Intent intentHome = new Intent(this, MainActivity.class);
 
         startActivity(intentHome);
+    }
+
+    public void toList(View v) {
+        Intent intentListDisplay = new Intent(this, ListPreview.class);
+
+        startActivity(intentListDisplay);
     }
 }
