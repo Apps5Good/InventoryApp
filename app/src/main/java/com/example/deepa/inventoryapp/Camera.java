@@ -20,17 +20,11 @@ public class Camera extends AppCompatActivity {
         preview = findViewById(R.id.photoPreview);
 
         //starting activity and extracting data from the intent
+        //this boolean represents whether we are adding items or removing items from inventory
         Bundle addOrSubtract = getIntent().getExtras();
         Boolean status = addOrSubtract.getBoolean("status");
 
-       /* TextView answerBox = findViewById(R.id.statusTest);
-        if(status) {
-            answerBox.setText(R.string.test_add);
-        }
-        else {
-            answerBox.setText(R.string.test_remove);
-        }*/
-        Button cameraButton = (Button)findViewById(R.id.cameraButton);
+               Button cameraButton = (Button)findViewById(R.id.cameraButton);
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override

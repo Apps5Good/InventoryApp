@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.os.Parcelable;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,8 +27,12 @@ public class InventoryDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_display);
 
-       // Bundle bundle = getIntent().getExtras();
-       // items  = bundle.getParcelableArrayList("itemList");
+        //below is an attempt to use Parcelabel to import an Arraylist of items from the previous activity
+        //but currently it makes the app crash
+
+       /* Bundle bundle = getIntent().getExtras();
+        items  = bundle.getParcelableArrayList("itemList"); */
+
         items = new ArrayList<>();
         readItemData();
 
@@ -40,7 +46,8 @@ public class InventoryDisplay extends AppCompatActivity {
     }
 
     private void readItemData() {
-        //read song data from file and construct song object to store in an arraylist
+        //read item data from file and populate the listview
+
         InputStream is = getResources().openRawResource(R.raw.modelreceipt);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line = "";
@@ -54,6 +61,37 @@ public class InventoryDisplay extends AppCompatActivity {
         catch(IOException e) {
             Log.wtf("ItemData", "ya dun messed up");
         }
+
+        //Hopefully this will work at some point--it's trying to take a shared file between this class and the ListPreview
+        //class and read the file line by line to populate the inventory. This would allow the user to make changes to the
+        //Edittext in the previous screen and have it automatically update the inventory
+
+
+       /* try {
+            // open the file for reading
+            InputStream fis = new FileInputStream("modelreceipt.txt");
+            // if file the available for reading
+            if (fis != null) {
+
+                // prepare the file for reading
+                InputStreamReader chapterReader = new InputStreamReader(fis);
+                BufferedReader buffreader = new BufferedReader(chapterReader);
+
+                String line;
+
+                // read every line of the file into the line-variable, one line at the time
+                do {
+                    line = buffreader.readLine();
+                    // do something with the line
+                    items.add(new Item(line));
+                } while (line != null);
+
+            }
+
+            fis.close();
+        } catch (Exception e) {
+            // print stack trace.
+        }*/
     }
 }
 
