@@ -10,7 +10,7 @@
         android:id="@+id/items"
         android:layout_width="278dp"
         android:layout_height="276dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="108dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
@@ -22,14 +22,28 @@
     <TextView
         android:id="@+id/editInstructions"
         android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tap_to_edit"
+        app:layout_constraintEnd_toEndOf="@+id/items"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/items"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/tap_to_edit"
+        android:onClick="toInventory"
+        android:text="@string/to_inventory"
         app:layout_constraintBottom_toTopOf="@+id/items"
-        app:layout_constraintEnd_toEndOf="@+id/items"
-        app:layout_constraintStart_toStartOf="@+id/items"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editInstructions" />
 </android.support.constraint.ConstraintLayout>

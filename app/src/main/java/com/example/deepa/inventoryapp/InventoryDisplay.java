@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.os.Parcelable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,25 +15,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+
 public class InventoryDisplay extends AppCompatActivity {
-    private  ArrayList<Item> items;
-    private ArrayList<String> itemstrings;
+
+    ArrayList<Item> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_display);
+
+       // Bundle bundle = getIntent().getExtras();
+       // items  = bundle.getParcelableArrayList("itemList");
         items = new ArrayList<>();
         readItemData();
 
-        itemstrings = new ArrayList<>();
-
-        for(Item myItem: items) {
-            itemstrings.add(myItem.getItemName());
-        }
-
-        ListAdapter myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemstrings);
-        EditText inputSearch;
+        ListAdapter myAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+        //EditText inputSearch;
 
         ListView myListView = (ListView) findViewById(R.id.myListView);
         //inputSearch = (EditText) findViewById(R.id.searchBar);
