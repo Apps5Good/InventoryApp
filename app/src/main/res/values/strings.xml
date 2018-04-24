@@ -17,5 +17,6 @@
 
     //ListDisplay Page
     <string name="tap_to_edit">Tap below to edit your items.</string>
+    <string name="save_list">Save List</string>
 
 </resources>

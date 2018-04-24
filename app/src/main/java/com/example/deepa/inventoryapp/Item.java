@@ -1,5 +1,8 @@
 package com.example.deepa.inventoryapp;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,11 +12,19 @@ import android.os.Parcelable;
  *
  */
 
-public class Item implements Parcelable{
+@Entity
+public class Item{
         //Dataa
+
+        @PrimaryKey(autoGenerate = true)
+        private int id;
+
+        @ColumnInfo(name = "itemName")
         private String itemName;
+
+        @ColumnInfo(name = "itemQuantity")
         private int itemQuantity;
-        private Parcelable.Creator CREATOR;
+
         //Constructor
         /**
          * Constructs an item with given name and given quantity
@@ -59,6 +70,38 @@ public class Item implements Parcelable{
         }
 
         /**
+         * accesses the individual id for each item
+         * @return the id
+         */
+        public int getId() {
+            return id;
+         }
+
+        /**
+         * sets the item name to the String
+         * @param newName
+         */
+        public void setItemName(String newName) {
+             itemName = newName;
+         }
+
+        /**
+         * sets the item quantity to the given parameter
+         * @param newQuantity
+         */
+        public void setItemQuantity(int newQuantity) {
+            itemQuantity = newQuantity;
+        }
+
+        /**
+         * sets the item id to the given parameter
+         * @param id
+         */
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        /**
          * Adds to the amount of an item that already exists
          * @param amount of items to be added.
          *
@@ -74,17 +117,6 @@ public class Item implements Parcelable{
         public void decrement(int amount) {
             itemQuantity = itemQuantity - amount;
         }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(itemName);
-        parcel.writeInt(itemQuantity);
-    }
 
     @Override
     public String toString() {

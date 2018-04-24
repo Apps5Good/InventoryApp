@@ -1,10 +1,12 @@
 package com.example.deepa.inventoryapp;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.os.Parcelable;
 
@@ -19,14 +21,31 @@ import java.util.ArrayList;
 
 public class ListPreview extends AppCompatActivity {
     ArrayList<Item> listFromPhoto;
+    Button save;
+    String[] itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_preview);
         readPhoto();
-      //  listFromPhoto = new ArrayList<>();
 
+        save = findViewById(R.id.saveButton);
+
+        final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
+                .allowMainThreadQueries().build();
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 4/16/2018 Save to database
+                itemList = readEditText();
+                for(int i = 0; i < itemList.length; i++) {
+                    db.userDao().insertAll((new Item(itemList[i])));
+                }
+                startActivity(new Intent(ListPreview.this, InventoryDisplay.class));
+            }
+        });
     }
 
     private void readPhoto() {
@@ -68,27 +87,20 @@ public class ListPreview extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public void toInventory(View v) {
+    public String[] readEditText() {
         //This was an attempt to export an arraylist with items found in the editText view, but this currently
         //makes the app crash
 
-      /* EditText listPreview = findViewById(R.id.items);
+        EditText listPreview = findViewById(R.id.items);
 
         String multiLines = listPreview.getText().toString();
         String[] items;
         String delimiter = "\n";
 
         items = multiLines.split(delimiter);
+        return items;
 
-        for(int i = 0; i < items.length - 1; i++) {
-            listFromPhoto.add(new Item(items[i]));
-        } */
-
-        Intent intentInventory = new Intent(this, InventoryDisplay.class);
-       // intentInventory.putParcelableArrayListExtra("itemList", listFromPhoto);
-        startActivity(intentInventory);
-
-    }
+      }
 
 }
 
