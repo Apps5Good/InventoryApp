@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class Camera extends AppCompatActivity {
     private ImageView preview;
+    public Boolean addorsub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,9 @@ public class Camera extends AppCompatActivity {
         //starting activity and extracting data from the intent
         //this boolean represents whether we are adding items or removing items from inventory
         Bundle addOrSubtract = getIntent().getExtras();
-        Boolean status = addOrSubtract.getBoolean("status");
+        addorsub = addOrSubtract.getBoolean("status");
 
-               Button cameraButton = (Button)findViewById(R.id.cameraButton);
+        Button cameraButton = (Button)findViewById(R.id.cameraButton);
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +57,8 @@ public class Camera extends AppCompatActivity {
 
     public void toList(View v) {
         Intent intentListDisplay = new Intent(this, ListPreview.class);
-
+        intentListDisplay.putExtra("status", addorsub);
         startActivity(intentListDisplay);
+
     }
 }

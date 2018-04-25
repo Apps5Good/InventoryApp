@@ -23,12 +23,16 @@ import java.util.List;
 public class ListPreview extends AppCompatActivity {
     Button save;
     String[] itemList;
+    Boolean add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_preview);
         readPhoto();
+
+        Bundle addOrSubtract = getIntent().getExtras();
+        add = addOrSubtract.getBoolean("status");
 
         save = findViewById(R.id.saveButton);
 
@@ -38,24 +42,13 @@ public class ListPreview extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 itemList = readEditText();
-                boolean isThere;
                 List<Item> inventory = db.userDao().getAllItems();
-
-                for (int i = 0; i < itemList.length; i++) {
-                    isThere = false;
-                    for (Item myItem: inventory) {
-                        if (itemList[i].equals(myItem.getItemName())) {
-                            isThere = true;
-                            myItem.increment(1);
-                            db.userDao().updateQuantity(myItem);
-                        }
-                   }
-                    if(!isThere) {
-                        db.userDao().insertAll((new Item(itemList[i])));
-                    }
+                if(add) {
+                    addItems(itemList, inventory, db);
                 }
+                else
+                    subtractItems(itemList, inventory, db);
 
                 startActivity(new Intent(ListPreview.this, InventoryDisplay.class));
             }
@@ -116,5 +109,43 @@ public class ListPreview extends AppCompatActivity {
         return items;
     }
 
+      public void addItems(String[] textInput, List<Item> inventory, AppDatabase db) {
+        boolean isThere;
+        for (int i = 0; i < itemList.length; i++) {
+            isThere = false;
+            for (Item myItem: inventory) {
+                if (itemList[i].equals(myItem.getItemName())) {
+                    isThere = true;
+                    myItem.increment(1);
+                    db.userDao().updateQuantity(myItem);
+                }
+            }
+            if(!isThere) {
+                db.userDao().insertAll((new Item(itemList[i])));
+            }
+        }
+    }
+
+    public void subtractItems(String[] textInput, List<Item> inventory, AppDatabase db) {
+        boolean isThere;
+        for (int i = 0; i < itemList.length; i++) {
+            isThere = false;
+            for (Item myItem : inventory) {
+                if (itemList[i].equals(myItem.getItemName())) {
+                    isThere = true;
+                    if(myItem.getItemQuantity() > 1) {
+                        myItem.decrement(1);
+                        db.userDao().updateQuantity(myItem);
+                    }
+                    else {
+                        db.userDao().deleteItems(myItem);
+                    }
+                }
+            }
+            if (!isThere) {
+
+            }
+        }
+    }
 }
 

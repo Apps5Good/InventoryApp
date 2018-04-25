@@ -1,6 +1,6 @@
 <resources>
     //Main Activity
-    <string name="app_name">InventoryApp</string>
+    <string name="app_name">lolxDventory</string>
     <string name="add_items">Add Items</string>
     <string name="remove_items">Remove Items</string>
     <string name="access_inventory">Access Inventory</string>

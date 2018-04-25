@@ -19,7 +19,8 @@
         <activity android:name=".Camera" />
         <activity android:name=".InventoryDisplay" />
         <activity android:name=".ListPreview" />
-        <activity android:name=".CreateItem"></activity>
+        <activity android:name=".CreateItem" />
+        <activity android:name=".ItemInfo"></activity>
     </application>
 
 </manifest>
