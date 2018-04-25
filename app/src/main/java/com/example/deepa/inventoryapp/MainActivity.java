@@ -21,23 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-  /* public void readReceipt() {
-        InputStream is = getResources().openRawResource(R.raw.modelreceipt);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        String line = "";
-        ArrayList<Item> newReceipt = new ArrayList<>();
-
-        try {
-            while ((line = reader.readLine()) != null) {
-                newReceipt.add(new Item(line));
-            }
-        }
-        catch(IOException e) {
-            Log.wtf("ImageData", "ya dun messed up");
-        }
-    }*/
-
-    public void addItems(View v) {
+     public void addItems(View v) {
         Boolean status = true; //if true, it will add; if false, it will subtract
         Intent intentAdd = new Intent (this, Camera.class);
         intentAdd.putExtra("status", status);

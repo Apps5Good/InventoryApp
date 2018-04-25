@@ -18,9 +18,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListPreview extends AppCompatActivity {
-    ArrayList<Item> listFromPhoto;
     Button save;
     String[] itemList;
 
@@ -38,11 +38,25 @@ public class ListPreview extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 4/16/2018 Save to database
+
                 itemList = readEditText();
-                for(int i = 0; i < itemList.length; i++) {
-                    db.userDao().insertAll((new Item(itemList[i])));
+                boolean isThere;
+                List<Item> inventory = db.userDao().getAllItems();
+
+                for (int i = 0; i < itemList.length; i++) {
+                    isThere = false;
+                    for (Item myItem: inventory) {
+                        if (itemList[i].equals(myItem.getItemName())) {
+                            isThere = true;
+                            myItem.increment(1);
+                            db.userDao().updateQuantity(myItem);
+                        }
+                   }
+                    if(!isThere) {
+                        db.userDao().insertAll((new Item(itemList[i])));
+                    }
                 }
+
                 startActivity(new Intent(ListPreview.this, InventoryDisplay.class));
             }
         });
@@ -76,7 +90,7 @@ public class ListPreview extends AppCompatActivity {
             String delimiter = "\n";
             items = itemString.split(delimiter);
 
-            for(int i = 0; i < items.length - 1; i++) {
+            for (int i = 0; i < items.length - 1; i++) {
                 storage.write(items[i].getBytes());
                 storage.close();
             }
@@ -87,6 +101,7 @@ public class ListPreview extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     public String[] readEditText() {
         //This was an attempt to export an arraylist with items found in the editText view, but this currently
         //makes the app crash
@@ -99,8 +114,7 @@ public class ListPreview extends AppCompatActivity {
 
         items = multiLines.split(delimiter);
         return items;
-
-      }
+    }
 
 }
 

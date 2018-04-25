@@ -1,9 +1,11 @@
 package com.example.deepa.inventoryapp;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -55,44 +57,25 @@ public class InventoryDisplay extends AppCompatActivity {
 
         try {
             while ((line = reader.readLine()) != null) {
-               Item i = new Item(line);
-               items.add(i);
+                Item i = new Item(line);
+                items.add(i);
             }
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             Log.wtf("ItemData", "ya dun messed up");
         }
 
-        //Hopefully this will work at some point--it's trying to take a shared file between this class and the ListPreview
-        //class and read the file line by line to populate the inventory. This would allow the user to make changes to the
-        //Edittext in the previous screen and have it automatically update the inventory
+    }
 
+    public void toHome(View v) {
+        Intent intentHome = new Intent(this, MainActivity.class);
 
-       /* try {
-            // open the file for reading
-            InputStream fis = new FileInputStream("modelreceipt.txt");
-            // if file the available for reading
-            if (fis != null) {
+        startActivity(intentHome);
+    }
 
-                // prepare the file for reading
-                InputStreamReader chapterReader = new InputStreamReader(fis);
-                BufferedReader buffreader = new BufferedReader(chapterReader);
+    public void toCreateItem(View v) {
+        Intent intentCreate = new Intent(this, CreateItem.class);
 
-                String line;
-
-                // read every line of the file into the line-variable, one line at the time
-                do {
-                    line = buffreader.readLine();
-                    // do something with the line
-                    items.add(new Item(line));
-                } while (line != null);
-
-            }
-
-            fis.close();
-        } catch (Exception e) {
-            // print stack trace.
-        }*/
+        startActivity(intentCreate);
     }
 }
 
