@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/myListView"
-        android:layout_width="325dp"
-        android:layout_height="454dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -25,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="47dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginStart="76dp"
         android:onClick="toHome"
         android:text="@string/to_home"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,11 +34,11 @@
 
     <Button
         android:id="@+id/toAddPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
         android:onClick="toCreateItem"
         android:text="@string/add_items"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -6,4 +6,60 @@
     android:layout_height="match_parent"
     tools:context="com.example.deepa.inventoryapp.ItemInfo">
 
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="237dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginStart="18dp"
+        android:text="@string/quantity"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/edit_quantity"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="76dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="73dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="54dp"
+        android:text="@string/item"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/quantity"
+        app:layout_constraintEnd_toStartOf="@+id/edit_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/edit_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="142dp"
+        android:layout_marginRight="142dp"
+        android:text="@string/edit_quantity"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/quantity" />
+
+    <TextView
+        android:id="@+id/edit_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="142dp"
+        android:layout_marginRight="142dp"
+        android:text="@string/edit_item"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item" />
+
 </android.support.constraint.ConstraintLayout>
