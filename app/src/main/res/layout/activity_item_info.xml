@@ -4,62 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.deepa.inventoryapp.ItemInfo">
+    tools:context="com.example.deepa.inventoryapp.ItemInfo"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/quantity"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="237dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginStart="18dp"
+        android:layout_width="96dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="352dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="@string/quantity"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edit_quantity"
+        app:layout_constraintEnd_toStartOf="@+id/quantitydisplay"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/item"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="76dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="73dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="54dp"
+        android:layout_width="62dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
         android:text="@string/item"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/quantity"
-        app:layout_constraintEnd_toStartOf="@+id/edit_item"
+        app:layout_constraintEnd_toStartOf="@+id/namedisplay"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/quantitydisplay"
+        android:layout_width="188dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="352dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/namedisplay"
+        android:layout_width="220dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="72dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/quantitydisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="328dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/instructions"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantitydisplay"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <TextView
+        android:id="@+id/currentInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/current_info"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/namedisplay"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/edit_quantity"
+    <EditText
+        android:id="@+id/editName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="142dp"
-        android:layout_marginRight="142dp"
-        android:text="@string/edit_quantity"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/quantity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/quantity" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructions"
+        app:layout_constraintVertical_bias="0.037" />
 
-    <TextView
-        android:id="@+id/edit_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="142dp"
-        android:layout_marginRight="142dp"
-        android:text="@string/edit_item"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/item"
+    <EditText
+        android:id="@+id/editQuantity"
+        android:layout_width="102dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/item" />
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toEndOf="@+id/editName"
+        app:layout_constraintTop_toBottomOf="@+id/instructions"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/save_and_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="121dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/delete_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
 
 </android.support.constraint.ConstraintLayout>

@@ -22,6 +22,7 @@ public class InventoryDisplay extends AppCompatActivity {
     ListView myListView;
     String ItemName;
     int ItemQuantity;
+    int ItemId;
     Item item;
 
     @Override
@@ -47,15 +48,17 @@ public class InventoryDisplay extends AppCompatActivity {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l){
-            Intent intent = new Intent(InventoryDisplay.this, ItemInfo.class);
+            Intent intentInfo = new Intent(InventoryDisplay.this, ItemInfo.class);
             item = (Item) myListView.getItemAtPosition(i);
             ItemName = item.getItemName();
             ItemQuantity = item.getItemQuantity();
+            ItemId = item.getId();
 
-            intent.putExtra("ItemName", ItemName);
-            intent.putExtra("ItemQuantity",ItemQuantity);
+            intentInfo.putExtra("ItemName", ItemName);
+            intentInfo.putExtra("ItemQuantity",ItemQuantity);
+            intentInfo.putExtra("ItemId", ItemId);
 
-            startActivity(intent);
+            startActivity(intentInfo);
 
             }
         });

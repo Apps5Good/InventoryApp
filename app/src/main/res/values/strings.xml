@@ -22,9 +22,14 @@
     <string name="item_quantity">Item Quantity</string>
     <string name="cancel">Cancel</string>
     <string name="create_item">Create</string>
+
+    //ItemInfo Page
     <string name="quantity">Quantity:</string>
     <string name="item">Item:</string>
-    <string name="edit_item" />
-    <string name="edit_quantity" />
+    <string name="instructions">If you would like to edit item information, please insert below: </string>
+    <string name="current_info">Current Item Information:</string>
+    <string name="exit">Exit</string>
+    <string name="save_and_exit">Save and Exit</string>
+    <string name="delete_item">Delete Item</string>
 
 </resources>
