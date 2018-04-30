@@ -1,7 +1,7 @@
 <resources>
     //Main Activity
     <string name="app_name">lolxDventory</string>
-    <string name="add_items">Add Items</string>
+    <string name="add_items">Create Item</string>
     <string name="remove_items">Remove Items</string>
     <string name="access_inventory">Access Inventory</string>
 
@@ -22,5 +22,9 @@
     <string name="item_quantity">Item Quantity</string>
     <string name="cancel">Cancel</string>
     <string name="create_item">Create</string>
+    <string name="quantity">Quantity:</string>
+    <string name="item">Item:</string>
+    <string name="edit_item" />
+    <string name="edit_quantity" />
 
 </resources>
