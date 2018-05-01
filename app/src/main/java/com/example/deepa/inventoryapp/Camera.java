@@ -14,6 +14,7 @@ public class Camera extends AppCompatActivity {
     private ImageView preview;
     public Boolean addorsub;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

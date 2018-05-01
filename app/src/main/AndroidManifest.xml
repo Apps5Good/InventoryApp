@@ -22,5 +22,7 @@
         <activity android:name=".CreateItem" />
         <activity android:name=".ItemInfo"></activity>
     </application>
-
+    <meta-data
+        android:name="com.google.android.gms.vision.DEPENDENCIES"
+        android:value="ocr" />
 </manifest>
