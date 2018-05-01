@@ -27,8 +27,7 @@ public class ItemInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_info);
 
-        nameDisplay = findViewById(R.id.namedisplay);
-        quantityDisplay = findViewById(R.id.quantitydisplay);
+
         editName = findViewById(R.id.editName);
         editQuantity = findViewById(R.id.editQuantity);
         saveAndExit = findViewById(R.id.saveButton);
@@ -37,8 +36,6 @@ public class ItemInfo extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         if(bundle != null){
-            nameDisplay.setText(bundle.getString("ItemName"));
-            quantityDisplay.setText(String.valueOf(bundle.getInt("ItemQuantity")));
             editName.setText(bundle.getString("ItemName"));
             editQuantity.setText(String.valueOf(bundle.getInt("ItemQuantity")));
             id = bundle.getInt("ItemId");
