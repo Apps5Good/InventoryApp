@@ -10,7 +10,7 @@
     <string name="to_inventory">My Inventory</string>
 
     //Camera Page
-    <string name="scan_receipt">Scan Receipt</string>
+    <string name="scan_receipt">Rescan</string>
     <string name="see_items">See Items</string>
 
     //ListDisplay Page

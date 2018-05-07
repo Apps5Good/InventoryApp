@@ -1,7 +1,7 @@
 package com.example.deepa.inventoryapp;
 
 import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+        import android.arch.persistence.room.RoomDatabase;
 
 /**
  * Created by deepa on 4/23/2018.
