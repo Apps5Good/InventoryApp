@@ -2,9 +2,14 @@ package com.example.deepa.inventoryapp;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,7 +23,7 @@ import java.util.List;
 
 public class InventoryDisplay extends AppCompatActivity {
 
-    ArrayList<Item> items;
+    List<Item> items;
     ListView myListView;
     String ItemName;
     int ItemQuantity;
@@ -33,13 +38,10 @@ public class InventoryDisplay extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
                 .allowMainThreadQueries().build();
 
-        List<Item> items = db.userDao().getAllItems();
+        items = db.userDao().getAllItems();
+        final ArrayAdapter<Item> myAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
 
-       ArrayAdapter<Item> myAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
-
-
-        final ListView myListView = (ListView) findViewById(R.id.myListView);
-
+        myListView = (ListView) findViewById(R.id.myListView);
         myListView.setAdapter(myAdapter);
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,6 +64,41 @@ public class InventoryDisplay extends AppCompatActivity {
          myListView.setAdapter(myAdapter);
     }
 
+    //taken from https://www.youtube.com/watch?v=jJYSm_yrT7I
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.item_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<Item> tempList = new ArrayList<Item>();
+
+                for(Item i: items) {
+                    if(i.getItemName().toLowerCase().contains(newText.toLowerCase())) {
+                        tempList.add(i);
+                    }
+                }
+                ArrayAdapter<Item> myAdapter = new ArrayAdapter<Item>(InventoryDisplay.this,
+                        android.R.layout.simple_list_item_1, tempList);
+                myListView.setAdapter(myAdapter);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
     public void toHome(View v) {
         Intent intentHome = new Intent(this, MainActivity.class);
 
@@ -72,11 +109,6 @@ public class InventoryDisplay extends AppCompatActivity {
         Intent intentCreate = new Intent(this, CreateItem.class);
 
         startActivity(intentCreate);
-    }
-
-    public void toRemoveItem (View v){
-        Intent intentRemove = new Intent (this, ListPreview.class);
-        startActivity(intentRemove);
     }
 
 
