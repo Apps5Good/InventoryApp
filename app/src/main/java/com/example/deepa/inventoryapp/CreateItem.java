@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -34,20 +35,34 @@ public class CreateItem extends AppCompatActivity {
             public void onClick(View v) {
                 String itemname = String.valueOf(name.getText());
                 String amount = String.valueOf(quantity.getText());
-                boolean isThere = false;
-                List<Item> inventory = db.userDao().getAllItems();
 
-                    for (Item myItem: inventory) {
+
+                if(!isEmpty(name) && !isEmpty(quantity)) {
+
+                    if(quantity.equals("0")) {
+                        Toast.makeText(CreateItem.this, "Cannot add an item with quantity zero", Toast.LENGTH_SHORT).show();
+                        toInventory(v);
+                    }
+
+                    boolean isThere = false;
+                    List<Item> inventory = db.userDao().getAllItems();
+
+                    for (Item myItem : inventory) {
                         if (itemname.equals(myItem.getItemName())) {
                             isThere = true;
                             myItem.increment(Integer.parseInt(amount));
                             db.userDao().updateQuantity(myItem);
                         }
                     }
-                    if(!isThere) {
+                    if (!isThere) {
                         db.userDao().insertAll((new Item(itemname, Integer.parseInt(amount))));
                     }
-                startActivity(new Intent(CreateItem.this, InventoryDisplay.class));
+                    startActivity(new Intent(CreateItem.this, InventoryDisplay.class));
+                }
+                else {
+                    Toast.makeText(CreateItem.this, "Item cannot be created with null fields", Toast.LENGTH_SHORT).show();
+                    toInventory(v);
+                }
                 }
         });
     }
@@ -56,5 +71,9 @@ public class CreateItem extends AppCompatActivity {
         Intent intentInventory = new Intent(this, InventoryDisplay.class);
 
         startActivity(intentInventory);
+    }
+
+    private boolean isEmpty(EditText e) {
+        return e.getText().toString().trim().length() == 0;
     }
 }

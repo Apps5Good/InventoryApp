@@ -49,7 +49,7 @@ public class ListPreview extends AppCompatActivity {
                 itemList = readEditText();
                 List<Item> inventory = db.userDao().getAllItems();
                 if(add) {
-                    addItems(itemList, inventory, db);
+                   addItems(itemList, inventory, db);
                 }
                 else
                     subtractItems(itemList, inventory, db);
@@ -83,7 +83,7 @@ public class ListPreview extends AppCompatActivity {
 
         String multiLines = userField.getText().toString();
         String[] items;
-        String delimiter = "/";
+        String delimiter = "\n";
 
         items = multiLines.split(delimiter);
         return items;
