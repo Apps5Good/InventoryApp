@@ -36,13 +36,7 @@ public class CreateItem extends AppCompatActivity {
                 String itemname = String.valueOf(name.getText());
                 String amount = String.valueOf(quantity.getText());
 
-
-                if(!isEmpty(name) && !isEmpty(quantity)) {
-
-                    if(quantity.equals("0")) {
-                        Toast.makeText(CreateItem.this, "Cannot add an item with quantity zero", Toast.LENGTH_SHORT).show();
-                        toInventory(v);
-                    }
+                if(!isEmpty(name) && !isEmpty(quantity) && (!amount.equals("0"))) {
 
                     boolean isThere = false;
                     List<Item> inventory = db.userDao().getAllItems();
@@ -50,6 +44,8 @@ public class CreateItem extends AppCompatActivity {
                     for (Item myItem : inventory) {
                         if (itemname.equals(myItem.getItemName())) {
                             isThere = true;
+                            Toast.makeText(CreateItem.this, "Updated existing item" + itemname + "from" +
+                                    "quantity" + myItem.getItemQuantity() + "to" + amount, Toast.LENGTH_SHORT).show();
                             myItem.increment(Integer.parseInt(amount));
                             db.userDao().updateQuantity(myItem);
                         }
@@ -60,8 +56,13 @@ public class CreateItem extends AppCompatActivity {
                     startActivity(new Intent(CreateItem.this, InventoryDisplay.class));
                 }
                 else {
-                    Toast.makeText(CreateItem.this, "Item cannot be created with null fields", Toast.LENGTH_SHORT).show();
-                    toInventory(v);
+                    if(amount.equals("0")) {
+                        Toast.makeText(CreateItem.this, "Cannot add an item with a quantity of 0", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(CreateItem.this, "Item cannot be created with null fields", Toast.LENGTH_SHORT).show();
+                    }
+                      toInventory(v);
                 }
                 }
         });
