@@ -14,7 +14,7 @@
         android:layout_marginBottom="23dp"
         android:layout_marginTop="34dp"
         android:onClick="toList"
-        android:text="@string/scan_receipt"
+        android:text="@string/choose_photo"
         app:layout_constraintBottom_toTopOf="@+id/photoPreview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/toHome"

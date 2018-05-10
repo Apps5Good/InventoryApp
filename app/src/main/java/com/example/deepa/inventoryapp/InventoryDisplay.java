@@ -42,9 +42,6 @@ public class InventoryDisplay extends AppCompatActivity {
 
         myListView.setAdapter(myAdapter);
 
-
-
-
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l){

@@ -3,6 +3,7 @@ package com.example.deepa.inventoryapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,10 +19,13 @@ import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+import java.io.FileNotFoundException;
+
 public class Camera extends AppCompatActivity {
     private ImageView preview;
     public Boolean addorsub;
     Button scan;
+    Button cameraButton;
     String receipt;
     Bitmap bitmap;
 
@@ -32,27 +36,22 @@ public class Camera extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         preview = findViewById(R.id.photoPreview);
         scan = findViewById(R.id.toDisplay);
-        Button cameraButton = (Button)findViewById(R.id.cameraButton);
+        cameraButton = findViewById(R.id.cameraButton);
 
         //this boolean represents whether we are adding items or removing items from inventory
         Bundle addOrSubtract = getIntent().getExtras();
         addorsub = addOrSubtract.getBoolean("status");
 
-        //redirecting the user to the camera as soon as the activity starts to avoid accidentally
-        //submitting the list with no image scanned
-        Intent intentPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intentPhoto, 0);
-
-
-        //TODO 5/1/2018 add a way for the user to not HAVE to take an image if they don't want
-       /* cameraButton.setOnClickListener(new View.OnClickListener() {
+        cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intentPhoto, 0);
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 0);
             }
-        });*/
+        });
 
+       //taken from https://github.com/androidmads/AndroidOCRSample
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,17 +80,22 @@ public class Camera extends AppCompatActivity {
     }
 
 
-    @Override //accessing phone camera
+    //code taken from https://stackoverflow.com/questions/38352148/get-image-from-the-gallery-and-show-in-imageview
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
-        //Bitmap image = (Bitmap)data.getExtras().get("data");
 
-        //uncomment this line if you want to set the image to the default image in the res folder
-       Bitmap image =  BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.test_receipt);
-
-        bitmap = image;
-        preview.setImageBitmap(image);
+        if (resultCode == RESULT_OK) {
+            Uri targetUri = data.getData();
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                preview.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     public void toInventory(View v) {
