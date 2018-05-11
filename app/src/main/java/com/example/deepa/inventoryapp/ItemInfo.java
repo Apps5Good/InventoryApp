@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -54,9 +55,21 @@ public class ItemInfo extends AppCompatActivity {
 
                 for (Item myItem: inventory) {
                     if (id == myItem.getId()) {
-                        myItem.setItemName(itemname);
+                        if(itemname.replaceAll(" ", "").length() == 0) {
+                            Toast.makeText(ItemInfo.this, "Item must have a name", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ItemInfo.this, InventoryDisplay.class));
+                        }
+                        else
+                            myItem.setItemName(itemname);
+
                         myItem.setItemQuantity(amount);
-                        db.userDao().updateQuantity(myItem);
+
+                        if(myItem.getItemQuantity() == 0) {
+                            db.userDao().deleteItems(myItem);
+                            Toast.makeText(ItemInfo.this, "Item removed because of 0 quantity", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            db.userDao().updateQuantity(myItem);
                     }
                 }
                 exit(v);
@@ -70,7 +83,8 @@ public class ItemInfo extends AppCompatActivity {
 
                 for (Item myItem: inventory) {
                     if (id == myItem.getId()) {
-                       db.userDao().deleteItems(myItem);
+                        Toast.makeText(ItemInfo.this, "Item " + myItem.getItemName() + " removed from inventory", Toast.LENGTH_SHORT).show();
+                        db.userDao().deleteItems(myItem);
                     }
                 }
                 exit(v);

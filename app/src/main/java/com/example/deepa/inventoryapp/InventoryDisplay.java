@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,35 +30,43 @@ public class InventoryDisplay extends AppCompatActivity {
     int ItemQuantity;
     int ItemId;
     Item item;
+    TextView statusMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_display);
 
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
+        final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
                 .allowMainThreadQueries().build();
 
+        statusMessage = findViewById(R.id.inventoryStatus);
         items = db.userDao().getAllItems();
-        final ArrayAdapter<Item> myAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+        if(items.size()==0) {
+            statusMessage.setText(R.string.sad_status);
+        }
+        else
+            statusMessage.setText(null);
 
-        myListView = (ListView) findViewById(R.id.myListView);
+        final ArrayAdapter<Item> myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+
+        myListView = findViewById(R.id.myListView);
         myListView.setAdapter(myAdapter);
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l){
-            Intent intentInfo = new Intent(InventoryDisplay.this, ItemInfo.class);
-            item = (Item) myListView.getItemAtPosition(i);
-            ItemName = item.getItemName();
-            ItemQuantity = item.getItemQuantity();
-            ItemId = item.getId();
+                Intent intentInfo = new Intent(InventoryDisplay.this, ItemInfo.class);
+                item = (Item) myListView.getItemAtPosition(i);
+                ItemName = item.getItemName();
+                ItemQuantity = item.getItemQuantity();
+                ItemId = item.getId();
 
-            intentInfo.putExtra("ItemName", ItemName);
-            intentInfo.putExtra("ItemQuantity",ItemQuantity);
-            intentInfo.putExtra("ItemId", ItemId);
+                intentInfo.putExtra("ItemName", ItemName);
+                intentInfo.putExtra("ItemQuantity",ItemQuantity);
+                intentInfo.putExtra("ItemId", ItemId);
 
-            startActivity(intentInfo);
+                startActivity(intentInfo);
 
             }
         });
@@ -71,20 +80,20 @@ public class InventoryDisplay extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem searchItem = menu.findItem(R.id.item_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        SearchView searchView = (SearchView) searchItem.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                ArrayList<Item> tempList = new ArrayList<Item>();
+                ArrayList<Item> tempList = new ArrayList<>();
 
                 for(Item i: items) {
                     if(i.getItemName().toLowerCase().contains(newText.toLowerCase())) {
                         tempList.add(i);
                     }
                 }
-                ArrayAdapter<Item> myAdapter = new ArrayAdapter<Item>(InventoryDisplay.this,
+                ArrayAdapter<Item> myAdapter = new ArrayAdapter<>(InventoryDisplay.this,
                         android.R.layout.simple_list_item_1, tempList);
                 myListView.setAdapter(myAdapter);
 
@@ -110,7 +119,6 @@ public class InventoryDisplay extends AppCompatActivity {
 
         startActivity(intentCreate);
     }
-
 
 }
 

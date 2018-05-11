@@ -17,7 +17,6 @@ public class CreateItem extends AppCompatActivity {
     EditText name;
     EditText quantity;
     Button save;
-    private static final String TAG = "CreateItem";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +41,10 @@ public class CreateItem extends AppCompatActivity {
                     List<Item> inventory = db.userDao().getAllItems();
 
                     for (Item myItem : inventory) {
-                        if (itemname.equals(myItem.getItemName())) {
+                        if (itemname.toLowerCase().equals(myItem.getItemName().toLowerCase())) {
                             isThere = true;
-                            Toast.makeText(CreateItem.this, "Updated existing item" + itemname + "from" +
-                                    "quantity" + myItem.getItemQuantity() + "to" + amount, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateItem.this, "Updated existing item \"" + itemname + "\" by a quantity of " +
+                               amount, Toast.LENGTH_SHORT).show();
                             myItem.increment(Integer.parseInt(amount));
                             db.userDao().updateQuantity(myItem);
                         }

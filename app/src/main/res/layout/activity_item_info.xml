@@ -11,9 +11,9 @@
         android:id="@+id/quantity"
         android:layout_width="96dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="352dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="340dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="@string/quantity"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/item"
         android:layout_width="62dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="28dp"
@@ -65,21 +65,24 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editQuantity"
-        android:layout_width="239dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="352dp"
+        android:layout_width="229dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="340dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/quantity" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editName"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/saveButton"

@@ -49,10 +49,10 @@ public class ListPreview extends AppCompatActivity {
                 itemList = readEditText();
                 List<Item> inventory = db.userDao().getAllItems();
                 if(add) {
-                   addItems(itemList, inventory, db);
+                   addItems(inventory, db);
                 }
                 else
-                    subtractItems(itemList, inventory, db);
+                    subtractItems(inventory, db);
 
                 startActivity(new Intent(ListPreview.this, InventoryDisplay.class));
             }
@@ -89,29 +89,29 @@ public class ListPreview extends AppCompatActivity {
         return items;
     }
 
-      public void addItems(String[] textInput, List<Item> inventory, AppDatabase db) {
+      public void addItems(List<Item> inventory, AppDatabase db) {
         boolean isThere;
-          for (String anItemList : itemList) {
+          for (String listName : itemList) {
               isThere = false;
               for (Item myItem : inventory) {
-                  if (anItemList.equals(myItem.getItemName())) {
+                  if (listName.toLowerCase().equals(myItem.getItemName().toLowerCase())) {
                       isThere = true;
                       myItem.increment(1);
                       db.userDao().updateQuantity(myItem);
                   }
               }
               if (!isThere) {
-                  db.userDao().insertAll((new Item(anItemList)));
+                  db.userDao().insertAll((new Item(listName)));
               }
           }
     }
 
-    public void subtractItems(String[] textInput, List<Item> inventory, AppDatabase db) {
+    public void subtractItems(List<Item> inventory, AppDatabase db) {
         boolean isThere;
         for (String anItemList : itemList) {
             isThere = false;
             for (Item myItem : inventory) {
-                if (anItemList.equals(myItem.getItemName())) {
+                if (anItemList.toLowerCase().equals(myItem.getItemName().toLowerCase())) {
                     isThere = true;
                     if (myItem.getItemQuantity() > 1) {
                         myItem.decrement(1);

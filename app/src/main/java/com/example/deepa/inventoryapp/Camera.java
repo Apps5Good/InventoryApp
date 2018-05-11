@@ -36,6 +36,7 @@ public class Camera extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         preview = findViewById(R.id.photoPreview);
         scan = findViewById(R.id.toDisplay);
+        scan.setEnabled(false);
         cameraButton = findViewById(R.id.cameraButton);
 
         //this boolean represents whether we are adding items or removing items from inventory
@@ -96,6 +97,7 @@ public class Camera extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        scan.setEnabled(true);
     }
 
     public void toInventory(View v) {
