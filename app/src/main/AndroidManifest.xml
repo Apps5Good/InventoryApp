@@ -8,8 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/OverflowTheme">
+        <activity android:name=".MainActivity"
+            android:theme="@style/OverflowTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Camera" />
-        <activity android:name=".InventoryDisplay" />
+        <activity android:name=".InventoryDisplay"
+            android:theme="@style/OverflowTheme" />
         <activity android:name=".ListPreview" />
         <activity android:name=".CreateItem" />
         <activity android:name=".ItemInfo"></activity>
