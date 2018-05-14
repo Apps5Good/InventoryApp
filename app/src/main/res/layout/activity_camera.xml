@@ -14,15 +14,16 @@
         android:layout_marginBottom="23dp"
         android:layout_marginTop="34dp"
         android:background="#c4c5ba"
+        android:fontFamily="@font/molengo"
         android:onClick="toList"
         android:text="@string/choose_photo"
+        android:textColor="#224255"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/photoPreview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"/>
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/photoPreview"
@@ -42,26 +43,28 @@
         android:layout_height="46dp"
         android:layout_marginBottom="1dp"
         android:background="#c4c5ba"
+        android:fontFamily="@font/molengo"
         android:onClick="toHome"
         android:text="@string/to_home"
+        android:textColor="#224255"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photoPreview"
-        app:layout_constraintVertical_bias="1.0"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"/>
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/toInventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#c4c5ba"
+        android:fontFamily="@font/molengo"
         android:onClick="toInventory"
         android:text="@string/to_inventory"
+        android:textColor="#224255"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/toDisplay"
@@ -71,12 +74,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#c4c5ba"
+        android:fontFamily="@font/molengo"
         android:onClick="toList"
         android:text="@string/see_items"
+        android:textColor="#224255"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photoPreview"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"/>
+        app:layout_constraintTop_toBottomOf="@+id/photoPreview" />
 
 </android.support.constraint.ConstraintLayout>

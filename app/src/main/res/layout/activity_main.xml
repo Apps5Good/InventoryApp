@@ -10,23 +10,22 @@
     <Button
         android:id="@+id/addItem"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="84dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#c4c5ba"
+        android:fontFamily="@font/molengo"
         android:onClick="addItems"
         android:text="@string/add_items"
+        android:textColor="#224255"
         app:layout_constraintBottom_toTopOf="@+id/removeItems"
         app:layout_constraintEnd_toEndOf="@+id/removeItems"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="@+id/removeItems"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"
-       />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/removeItems"
