@@ -23,7 +23,10 @@
         app:layout_constraintEnd_toEndOf="@+id/removeItems"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="@+id/removeItems"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"
+       />
 
     <Button
         android:id="@+id/removeItems"
@@ -38,7 +41,11 @@
         app:layout_constraintBottom_toTopOf="@+id/accessInventory"
         app:layout_constraintEnd_toEndOf="@+id/accessInventory"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="@+id/accessInventory" />
+        app:layout_constraintStart_toStartOf="@+id/accessInventory"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"
+
+        />
 
     <Button
         android:id="@+id/accessInventory"
@@ -53,6 +60,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"
+       />
 
 </android.support.constraint.ConstraintLayout>

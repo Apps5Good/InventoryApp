@@ -17,7 +17,9 @@
         android:text="@string/quantity"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <TextView
         android:id="@+id/item"
@@ -33,7 +35,9 @@
         app:layout_constraintBottom_toTopOf="@+id/quantity"
         app:layout_constraintEnd_toStartOf="@+id/editName"
         app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <TextView
         android:id="@+id/currentInfo"
@@ -46,7 +50,9 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <EditText
         android:id="@+id/editName"
@@ -65,7 +71,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <EditText
         android:id="@+id/editQuantity"
@@ -82,7 +90,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <Button
         android:id="@+id/saveButton"
@@ -95,7 +105,9 @@
         android:text="@string/save_and_exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <Button
         android:id="@+id/deleteButton"
@@ -109,6 +121,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+        app:layout_constraintTop_toBottomOf="@+id/saveButton"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
 </android.support.constraint.ConstraintLayout>

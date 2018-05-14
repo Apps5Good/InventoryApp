@@ -18,7 +18,9 @@
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <Button
         android:id="@+id/toHome2"
@@ -30,7 +32,9 @@
         android:onClick="toHome"
         android:text="@string/to_home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <Button
         android:id="@+id/toAddPage"
@@ -42,7 +46,9 @@
         android:onClick="toCreateItem"
         android:text="@string/add_items"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
     <TextView
         android:id="@+id/inventoryStatus"
@@ -56,6 +62,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/myListView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/molengo"
+        android:textColor="#224255"/>
 
 </android.support.constraint.ConstraintLayout>
