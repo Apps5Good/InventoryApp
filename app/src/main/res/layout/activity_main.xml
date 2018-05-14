@@ -9,18 +9,14 @@
 
     <Button
         android:id="@+id/addItem"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="118dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#c4c5ba"
-        android:fontFamily="@font/molengo"
         android:onClick="addItems"
         android:text="@string/add_items"
-        android:textColor="#224255"
         app:layout_constraintBottom_toTopOf="@+id/removeItems"
         app:layout_constraintEnd_toEndOf="@+id/removeItems"
         app:layout_constraintHorizontal_bias="0.538"
@@ -34,17 +30,12 @@
         android:layout_marginBottom="128dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="#c4c5ba"
         android:onClick="subtractItems"
         android:text="@string/remove_items"
         app:layout_constraintBottom_toTopOf="@+id/accessInventory"
         app:layout_constraintEnd_toEndOf="@+id/accessInventory"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="@+id/accessInventory"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"
-
-        />
+        app:layout_constraintStart_toStartOf="@+id/accessInventory" />
 
     <Button
         android:id="@+id/accessInventory"
@@ -53,15 +44,11 @@
         android:layout_marginBottom="96dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="#c4c5ba"
         android:onClick="toInventory"
         android:text="@string/access_inventory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        android:fontFamily="@font/molengo"
-        android:textColor="#224255"
-       />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -36,13 +36,14 @@ public class Camera extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         preview = findViewById(R.id.photoPreview);
         scan = findViewById(R.id.toDisplay);
-        scan.setEnabled(false);
+        scan.setEnabled(false); //disables button until an image is uploaded
         cameraButton = findViewById(R.id.cameraButton);
 
         //this boolean represents whether we are adding items or removing items from inventory
         Bundle addOrSubtract = getIntent().getExtras();
         addorsub = addOrSubtract.getBoolean("status");
 
+        //code taken from https://stackoverflow.com/questions/38352148/get-image-from-the-gallery-and-show-in-imageview
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +63,10 @@ public class Camera extends AppCompatActivity {
                 StringBuilder strBuilder = new StringBuilder();
                 for (int i = 0; i < items.size(); i++) {
                     TextBlock item = (TextBlock) items.valueAt(i);
-                    strBuilder.append(item.getValue());
-                    strBuilder.append("/");
+                    if(item.getValue().replaceAll(" ", "").length() != 0) {
+                        strBuilder.append(item.getValue());
+                        strBuilder.append("\n");
+                    }
                     for (Text line : item.getComponents()) {
                         //extract scanned text lines here
                         Log.v("lines", line.getValue());
@@ -80,24 +83,25 @@ public class Camera extends AppCompatActivity {
         });
     }
 
-
     //code taken from https://stackoverflow.com/questions/38352148/get-image-from-the-gallery-and-show-in-imageview
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
             Uri targetUri = data.getData();
             try {
-                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                if(targetUri != null)
+                  bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
                 preview.setImageBitmap(bitmap);
+
+                //enable the button
+                scan.setEnabled(true);
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-        scan.setEnabled(true);
+
     }
 
     public void toInventory(View v) {
@@ -117,6 +121,5 @@ public class Camera extends AppCompatActivity {
         intentListDisplay.putExtra("status", addorsub);
         intentListDisplay.putExtra("receipt", receipt);
         startActivity(intentListDisplay);
-
     }
 }

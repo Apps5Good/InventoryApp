@@ -54,6 +54,8 @@ public class ListPreview extends AppCompatActivity {
                 else
                     subtractItems(inventory, db);
 
+                scanInventory(db);
+                
                 startActivity(new Intent(ListPreview.this, InventoryDisplay.class));
             }
         });
@@ -123,6 +125,14 @@ public class ListPreview extends AppCompatActivity {
             }
             if (!isThere) {
 
+            }
+        }
+    }
+
+    public void scanInventory(AppDatabase db) {
+        for(Item myItem : db.userDao().getAllItems()) {
+            if(myItem.getItemName().replaceAll(" ", "").length() == 0) {
+                db.userDao().deleteItems(myItem);
             }
         }
     }

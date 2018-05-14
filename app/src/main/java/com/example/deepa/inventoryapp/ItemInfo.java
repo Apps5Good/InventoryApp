@@ -62,13 +62,12 @@ public class ItemInfo extends AppCompatActivity {
                         else
                             myItem.setItemName(itemname);
 
-                        myItem.setItemQuantity(amount);
-
                         if(myItem.getItemQuantity() == 0) {
                             db.userDao().deleteItems(myItem);
                             Toast.makeText(ItemInfo.this, "Item removed because of 0 quantity", Toast.LENGTH_SHORT).show();
                         }
-                        else
+                        //TODO fix the crash that is caused by empty field
+                        myItem.setItemQuantity(amount);
                             db.userDao().updateQuantity(myItem);
                     }
                 }

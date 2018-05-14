@@ -3,14 +3,12 @@
     package="com.example.deepa.inventoryapp">
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/OverflowTheme">
-        <activity android:name=".MainActivity"
-            android:theme="@style/OverflowTheme">
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,17 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Camera" />
-        <activity android:name=".InventoryDisplay"
-            android:theme="@style/OverflowTheme" />
+        <activity android:name=".InventoryDisplay" />
         <activity android:name=".ListPreview" />
         <activity android:name=".CreateItem" />
-        <activity android:name=".ItemInfo"></activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity android:name=".ItemInfo"/>
     </application>
-    <meta-data
-        android:name="com.google.android.gms.vision.DEPENDENCIES"
-        android:value="ocr" />
+
 </manifest>
