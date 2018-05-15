@@ -136,5 +136,11 @@ public class ListPreview extends AppCompatActivity {
             }
         }
     }
+
+    public void toHome(View v) {
+        Intent intentHome = new Intent(this, MainActivity.class);
+
+        startActivity(intentHome);
+    }
 }
 

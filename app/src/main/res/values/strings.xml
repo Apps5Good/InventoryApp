@@ -13,9 +13,11 @@
     <string name="choose_photo">Choose Photo</string>
     <string name="see_items">See Items</string>
     <string name="content_description">Uploaded receipt photo</string>
+    <string name="rotate_photo">Rotate Photo</string>
 
     //ListDisplay Page
-    <string name="tap_to_edit">Tap below to edit your items.</string>
+    <string name="tap_to_edit">Tap below to edit your items. To specify
+        breaks between items, hit enter and start a new line. </string>
     <string name="save_list">Save List</string>
 
     //CreateItem Page

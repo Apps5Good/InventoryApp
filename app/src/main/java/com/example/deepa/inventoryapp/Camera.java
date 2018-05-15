@@ -3,6 +3,7 @@ package com.example.deepa.inventoryapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class Camera extends AppCompatActivity {
     Button cameraButton;
     String receipt;
     Bitmap bitmap;
-
+    Button rotate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class Camera extends AppCompatActivity {
         scan = findViewById(R.id.toDisplay);
         scan.setEnabled(false); //disables button until an image is uploaded
         cameraButton = findViewById(R.id.cameraButton);
+        rotate = findViewById(R.id.rotateImage);
+        rotate.setEnabled(false); //disables button until an image is uploaded
 
         //this boolean represents whether we are adding items or removing items from inventory
         Bundle addOrSubtract = getIntent().getExtras();
@@ -54,6 +57,9 @@ public class Camera extends AppCompatActivity {
         });
 
        //taken from https://github.com/androidmads/AndroidOCRSample
+        /**
+         * this is the image reading functionality of the entire application
+         */
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,9 +87,24 @@ public class Camera extends AppCompatActivity {
                 toList(v);
             }
         });
+
+        rotate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rotatePhoto();
+            }
+        });
+
     }
 
     //code taken from https://stackoverflow.com/questions/38352148/get-image-from-the-gallery-and-show-in-imageview
+
+    /**
+     * sets the image taken from the photo gallery as a preview in the app, and enables the "see list" button
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -92,11 +113,13 @@ public class Camera extends AppCompatActivity {
             Uri targetUri = data.getData();
             try {
                 if(targetUri != null)
-                  bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                    bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+
                 preview.setImageBitmap(bitmap);
 
                 //enable the button
                 scan.setEnabled(true);
+                rotate.setEnabled(true);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -104,22 +127,45 @@ public class Camera extends AppCompatActivity {
 
     }
 
+    /**
+     * takes the user to the inventory display page
+     * @param v instance of a View object
+     */
     public void toInventory(View v) {
         Intent intentInventory = new Intent(this,InventoryDisplay.class);
 
         startActivity(intentInventory);
     }
 
+    /**
+     * takes the user to the home page (Main Activity)
+     * @param v instance of a View object
+     */
     public void toHome(View v) {
         Intent intentHome = new Intent(this, MainActivity.class);
 
         startActivity(intentHome);
     }
 
+    /**
+     * takes the user to the list preview where they can edit items
+     * @param v instance of a View object
+     */
     public void toList(View v) {
         Intent intentListDisplay = new Intent(this, ListPreview.class);
         intentListDisplay.putExtra("status", addorsub);
         intentListDisplay.putExtra("receipt", receipt);
         startActivity(intentListDisplay);
+    }
+
+    /**
+     * rotates the imageView, since android studios likes to display images sideways
+     * code taken from https://stackoverflow.com/questions/8981845/android-rotate-image-in-imageview-by-an-angle
+     */
+    public void rotatePhoto() {
+        Matrix mat = new Matrix();
+        mat.postRotate(Integer.parseInt("90"));
+        bitmap = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(),bitmap.getHeight(), mat, true);
+        preview.setImageBitmap(bitmap);
     }
 }
