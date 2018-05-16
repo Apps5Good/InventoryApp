@@ -78,17 +78,11 @@ public class ItemInfo extends AppCompatActivity {
      * @param amount quantity of the item in the editText field
      */
     public void performChecks(AppDatabase db, String itemname, String amount) {
-        List<Item> inventory = db.userDao().getAllItems();
 
-        //initial quantity check
-        if(spaceReplaceInfo(amount) == 0) {
-            Toast.makeText(ItemInfo.this, "Item must have a quantity", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(ItemInfo.this, InventoryDisplay.class));
-        }
-
-        //name check
-        for (Item myItem: inventory) {
+        for (Item myItem: db.userDao().getAllItems()) {
             if (id == myItem.getId()) {
+
+                //name check
                 if(spaceReplaceInfo(itemname) == 0) {
                     Toast.makeText(ItemInfo.this, "Item must have a name", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ItemInfo.this, InventoryDisplay.class));
@@ -96,12 +90,19 @@ public class ItemInfo extends AppCompatActivity {
                 else
                     myItem.setItemName(itemname);
 
-                //quantity check number 2 (done here because it's done on every item in the list)
+                //quantity check 1
+                if(spaceReplaceInfo(amount) == 0) {
+                    Toast.makeText(ItemInfo.this, "Item must have a quantity", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ItemInfo.this, InventoryDisplay.class));
+                }
+                else
+                  myItem.setItemQuantity(Integer.parseInt(amount));
+
+                //quantity check 2
                 if(myItem.getItemQuantity() == 0) {
                     db.userDao().deleteItems(myItem);
                     Toast.makeText(ItemInfo.this, "Item removed because of 0 quantity", Toast.LENGTH_SHORT).show();
                 }
-                myItem.setItemQuantity(Integer.parseInt(amount));
                 db.userDao().updateQuantity(myItem);
             }
         }
@@ -124,5 +125,14 @@ public class ItemInfo extends AppCompatActivity {
         Intent intentInventory = new Intent(this, InventoryDisplay.class);
 
         startActivity(intentInventory);
+    }
+
+    private boolean isThere(AppDatabase db, Item i) {
+        for(Item dbItem : db.userDao().getAllItems()) {
+            if(dbItem.getItemName().toLowerCase().equals(i.getItemName().toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

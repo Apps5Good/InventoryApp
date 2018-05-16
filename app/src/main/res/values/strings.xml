@@ -1,9 +1,10 @@
 <resources>
     //Main Activity
     <string name="app_name">Overflow</string>
-    <string name="add_items">Create Item</string>
+    <string name="add_items">Add Items</string>
     <string name="remove_items">Remove Items</string>
     <string name="access_inventory">Access Inventory</string>
+    <string name="welcome">Welcome to Overflow!</string>
 
     //Multiple Pages
     <string name="to_home">Home</string>
