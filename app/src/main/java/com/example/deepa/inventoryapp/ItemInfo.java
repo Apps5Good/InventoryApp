@@ -14,8 +14,6 @@ import java.util.List;
 
 public class ItemInfo extends AppCompatActivity {
 
-    TextView nameDisplay;
-    TextView quantityDisplay;
     EditText editName;
     EditText editQuantity;
     Button saveAndExit;
@@ -28,14 +26,12 @@ public class ItemInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_info);
 
-
         editName = findViewById(R.id.editName);
         editQuantity = findViewById(R.id.editQuantity);
         saveAndExit = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
 
-        //this bundle contains the specific item id, which is important when updating
-        //item information
+        //this bundle contains the specific item id, which is important when updating item information
         Bundle bundle = getIntent().getExtras();
 
         if(bundle != null){
@@ -47,15 +43,11 @@ public class ItemInfo extends AppCompatActivity {
         final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
                 .allowMainThreadQueries().build();
 
-
         saveAndExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String itemname = String.valueOf(editName.getText());
                 String amt = String.valueOf(editQuantity.getText());
-
-                List<Item> inventory = db.userDao().getAllItems();
-
                 performChecks(db, itemname, amt);
 
                 exit(v);

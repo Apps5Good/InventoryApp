@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context="com.example.deepa.inventoryapp.MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/addItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
+        android:layout_width="96dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/button_color"
         android:onClick="addItems"
         android:text="@string/add_items"
         app:layout_constraintBottom_toTopOf="@+id/removeItems"
@@ -27,28 +29,34 @@
         android:id="@+id/removeItems"
         android:layout_width="126dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/button_color"
         android:onClick="subtractItems"
         android:text="@string/remove_items"
-        app:layout_constraintBottom_toTopOf="@+id/accessInventory"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/accessInventory"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="@+id/accessInventory" />
+        app:layout_constraintStart_toStartOf="@+id/accessInventory"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/accessInventory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
+        android:layout_width="148dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/button_color"
         android:onClick="toInventory"
         android:text="@string/access_inventory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/removeItems" />
 
 </android.support.constraint.ConstraintLayout>

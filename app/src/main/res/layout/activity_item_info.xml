@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context="com.example.deepa.inventoryapp.ItemInfo"
     tools:layout_editor_absoluteY="81dp">
 
@@ -92,6 +93,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/save_and_exit"
+        android:background="@color/button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -104,6 +106,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:text="@string/delete_item"
+        android:background="@color/button_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"

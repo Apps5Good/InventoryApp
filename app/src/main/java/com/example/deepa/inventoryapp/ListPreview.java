@@ -4,21 +4,9 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.os.Parcelable;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ListPreview extends AppCompatActivity {
     Button save;
@@ -47,12 +35,11 @@ public class ListPreview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 itemList = readEditText();
-                List<Item> inventory = db.userDao().getAllItems();
                 if(add) {
-                   addItems(inventory, db);
+                   addItems(db);
                 }
                 else
-                    subtractItems(inventory, db);
+                    subtractItems(db);
 
                 scanInventory(db);
                 
@@ -61,28 +48,11 @@ public class ListPreview extends AppCompatActivity {
         });
     }
 
-    private void readPhoto() {
-        EditText listPreview = findViewById(R.id.items);
-
-        //read item data from file
-        InputStream is = getResources().openRawResource(R.raw.modelreceipt);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        String line;
-
-        try {
-            while ((line = reader.readLine()) != null) {
-                listPreview.append(line + "\n");
-            }
-        } catch (IOException e) {
-            Log.wtf("ItemData", "ya dun messed up");
-        }
-    }
-
-
+    /**
+     * reads the editText line by line to extract item names
+     * @return an array of strings that will become item names
+     */
     public String[] readEditText() {
-        //This was an attempt to export an arraylist with items found in the editText view, but this currently
-        //makes the app crash
-
         String multiLines = userField.getText().toString();
         String[] items;
         String delimiter = "\n";
@@ -91,11 +61,15 @@ public class ListPreview extends AppCompatActivity {
         return items;
     }
 
-      public void addItems(List<Item> inventory, AppDatabase db) {
+    /**
+     * extracts item names from the string array and adds them to the inventory
+     * @param db instance of the AppDatabase
+     */
+      private void addItems(AppDatabase db) {
         boolean isThere;
           for (String listName : itemList) {
               isThere = false;
-              for (Item myItem : inventory) {
+              for (Item myItem : db.userDao().getAllItems()) {
                   if (listName.toLowerCase().equals(myItem.getItemName().toLowerCase())) {
                       isThere = true;
                       myItem.increment(1);
@@ -108,11 +82,15 @@ public class ListPreview extends AppCompatActivity {
           }
     }
 
-    public void subtractItems(List<Item> inventory, AppDatabase db) {
+    /**
+     * extracts item names from the string array and removes them from the inventory
+     * @param db instance of the AppDatabase
+     */
+    private void subtractItems(AppDatabase db) {
         boolean isThere;
         for (String anItemList : itemList) {
             isThere = false;
-            for (Item myItem : inventory) {
+            for (Item myItem : db.userDao().getAllItems()) {
                 if (anItemList.toLowerCase().equals(myItem.getItemName().toLowerCase())) {
                     isThere = true;
                     if (myItem.getItemQuantity() > 1) {
@@ -129,6 +107,10 @@ public class ListPreview extends AppCompatActivity {
         }
     }
 
+    /**
+     * searches inventory for any null items and deletes them before taking the user to the inventory
+     * @param db instance of the AppDatabase
+     */
     public void scanInventory(AppDatabase db) {
         for(Item myItem : db.userDao().getAllItems()) {
             if(myItem.getItemName().replaceAll(" ", "").length() == 0) {
@@ -137,6 +119,10 @@ public class ListPreview extends AppCompatActivity {
         }
     }
 
+    /**
+     * redirects the user to the MainActivity
+     * @param v instance of a View object
+     */
     public void toHome(View v) {
         Intent intentHome = new Intent(this, MainActivity.class);
 

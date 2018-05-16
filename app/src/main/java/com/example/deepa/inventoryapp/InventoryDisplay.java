@@ -2,19 +2,15 @@ package com.example.deepa.inventoryapp;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -53,6 +49,7 @@ public class InventoryDisplay extends AppCompatActivity {
         myListView = findViewById(R.id.myListView);
         myListView.setAdapter(myAdapter);
 
+        //saves the name, quantity, and id of the item to an intent so that the item is identifiable from different activities
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l){
@@ -73,7 +70,12 @@ public class InventoryDisplay extends AppCompatActivity {
          myListView.setAdapter(myAdapter);
     }
 
-    //taken from https://www.youtube.com/watch?v=jJYSm_yrT7I
+    /**
+     * taken from https://www.youtube.com/watch?v=jJYSm_yrT7I
+     * implements a searchbar that can update information during character changes
+     * @param menu an instance of a Menu item
+     * @return new ArrayList of only items that have strings that contain the characters being searched
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -108,12 +110,21 @@ public class InventoryDisplay extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
 
     }
+
+    /**
+     * redirects user to the MainActivity
+     * @param v instance of a View object
+     */
     public void toHome(View v) {
         Intent intentHome = new Intent(this, MainActivity.class);
 
         startActivity(intentHome);
     }
 
+    /**
+     * redirects user to the CreateItem Activity
+     * @param v instance of a View object
+     */
     public void toCreateItem(View v) {
         Intent intentCreate = new Intent(this, CreateItem.class);
 

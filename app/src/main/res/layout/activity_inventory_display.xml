@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context="com.example.deepa.inventoryapp.InventoryDisplay">
 
     <ListView
@@ -29,6 +30,7 @@
         android:layout_marginStart="76dp"
         android:onClick="toHome"
         android:text="@string/to_home"
+        android:background="@color/button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -41,6 +43,7 @@
         android:layout_marginRight="68dp"
         android:onClick="toCreateItem"
         android:text="@string/add_items"
+        android:background="@color/button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.Text;
@@ -57,9 +55,7 @@ public class Camera extends AppCompatActivity {
         });
 
        //taken from https://github.com/androidmads/AndroidOCRSample
-        /**
-         * this is the image reading functionality of the entire application
-         */
+        //this is the image reading functionality of the entire application
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +84,8 @@ public class Camera extends AppCompatActivity {
             }
         });
 
+
+        //allows the user to rotate the image if it is not oriented correctly
         rotate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,9 +99,9 @@ public class Camera extends AppCompatActivity {
 
     /**
      * sets the image taken from the photo gallery as a preview in the app, and enables the "see list" button
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     * @param requestCode requestCode from photo
+     * @param resultCode resultCode from photo
+     * @param data how the photo is stored
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

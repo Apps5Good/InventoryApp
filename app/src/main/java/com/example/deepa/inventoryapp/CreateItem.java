@@ -13,7 +13,6 @@ import java.util.List;
 
 public class CreateItem extends AppCompatActivity {
 
-
     EditText name;
     EditText quantity;
     Button save;
@@ -38,22 +37,22 @@ public class CreateItem extends AppCompatActivity {
                 if(!isEmpty(name) && !isEmpty(quantity) && (!amount.equals("0"))) {
 
                     boolean isThere = false;
-                    List<Item> inventory = db.userDao().getAllItems();
 
-                    for (Item myItem : inventory) {
+                    for (Item myItem : db.userDao().getAllItems()) {
                         if (itemname.toLowerCase().equals(myItem.getItemName().toLowerCase())) {
-                            isThere = true;
+                            isThere = true; //if the item is there, the quantity inputted will just be added to the existing quantity
                             Toast.makeText(CreateItem.this, "Updated existing item \"" + itemname + "\" by a quantity of " +
                                amount, Toast.LENGTH_SHORT).show();
                             myItem.increment(Integer.parseInt(amount));
                             db.userDao().updateQuantity(myItem);
                         }
                     }
-                    if (!isThere) {
+                    if (!isThere) { //if the item is not there, add a new item to the database
                         db.userDao().insertAll((new Item(itemname, Integer.parseInt(amount))));
                     }
                     startActivity(new Intent(CreateItem.this, InventoryDisplay.class));
                 }
+                //amount cannot equal zero or have a null , so there need to be checks
                 else {
                     if(amount.equals("0")) {
                         Toast.makeText(CreateItem.this, "Cannot add an item with a quantity of 0", Toast.LENGTH_SHORT).show();
@@ -67,12 +66,21 @@ public class CreateItem extends AppCompatActivity {
         });
     }
 
+    /**
+     * redirects user to the InventoryDisplay Activity
+     * @param v instance of a View object
+     */
     public void toInventory(View v) {
         Intent intentInventory = new Intent(this, InventoryDisplay.class);
 
         startActivity(intentInventory);
     }
 
+    /**
+     * determining whether the editText field is empty in order to detect null fields
+     * @param e EditText
+     * @return boolen (true if it is empty, false if it is not)
+     */
     private boolean isEmpty(EditText e) {
         return e.getText().toString().trim().length() == 0;
     }
