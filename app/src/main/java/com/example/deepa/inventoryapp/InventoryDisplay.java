@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,14 +28,17 @@ public class InventoryDisplay extends AppCompatActivity {
     int ItemId;
     Item item;
     TextView statusMessage;
+    Button delete;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_display);
 
-        final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
                 .allowMainThreadQueries().build();
+        delete = findViewById(R.id.nukeTable);
 
         statusMessage = findViewById(R.id.inventoryStatus);
         items = db.userDao().getAllItems();
@@ -68,6 +72,13 @@ public class InventoryDisplay extends AppCompatActivity {
             }
         });
          myListView.setAdapter(myAdapter);
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nukeTable();
+            }
+        });
     }
 
     /**
@@ -129,6 +140,16 @@ public class InventoryDisplay extends AppCompatActivity {
         Intent intentCreate = new Intent(this, CreateItem.class);
 
         startActivity(intentCreate);
+    }
+
+    /**
+     * deletes the entire inventory from the database and refreshes the page
+     */
+    public void nukeTable() {
+        db.userDao().nukeTable();
+
+        Intent intentRefresh = new Intent(this, InventoryDisplay.class);
+        startActivity(intentRefresh);
     }
 
 }

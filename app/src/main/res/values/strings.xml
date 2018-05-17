@@ -29,6 +29,7 @@
 
     //Inventory Page
     <string name="sad_status">There are no items in your inventory :(</string>
+    <string name="clear_all">Clear All</string>
 
     //ItemInfo Page
     <string name="quantity">Quantity:</string>

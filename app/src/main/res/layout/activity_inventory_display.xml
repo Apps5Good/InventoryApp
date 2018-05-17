@@ -23,11 +23,11 @@
 
     <Button
         android:id="@+id/toHome2"
-        android:layout_width="102dp"
+        android:layout_width="87dp"
         android:layout_height="47dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:background="@color/button_color"
         android:onClick="toHome"
         android:text="@string/to_home"
@@ -39,11 +39,26 @@
         android:layout_width="113dp"
         android:layout_height="47dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:background="@color/button_color"
         android:onClick="toCreateItem"
         android:text="@string/add_items"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/nukeTable"
+        android:layout_width="96dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/button_color"
+        android:text="@string/clear_all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -61,5 +76,6 @@
         app:layout_constraintEnd_toEndOf="@+id/myListView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
