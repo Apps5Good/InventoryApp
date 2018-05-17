@@ -32,7 +32,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/tap_to_edit"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/items"
         app:layout_constraintEnd_toEndOf="@+id/items"

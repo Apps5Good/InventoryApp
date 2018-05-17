@@ -79,7 +79,7 @@ public class Item{
 
         /**
          * sets the item name to the String
-         * @param newName
+         * @param newName the new item name
          */
         public void setItemName(String newName) {
              itemName = newName;
@@ -87,7 +87,7 @@ public class Item{
 
         /**
          * sets the item quantity to the given parameter
-         * @param newQuantity
+         * @param newQuantity the new item quantity
          */
         public void setItemQuantity(int newQuantity) {
             itemQuantity = newQuantity;
@@ -95,7 +95,7 @@ public class Item{
 
         /**
          * sets the item id to the given parameter
-         * @param id
+         * @param id the new item id
          */
         public void setId(int id) {
             this.id = id;
@@ -118,9 +118,13 @@ public class Item{
             itemQuantity = itemQuantity - amount;
         }
 
+    /**
+     * toString method returns the item name followed by the item quantity
+     * @return itemName + itemQuantity
+     */
     @Override
-    public String toString() {
-        return getItemName() + " " + getItemQuantity();
-    }
+        public String toString() {
+            return getItemName() + " " + getItemQuantity();
+        }
 }
 

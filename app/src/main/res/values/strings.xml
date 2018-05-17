@@ -34,10 +34,12 @@
     //ItemInfo Page
     <string name="quantity">Quantity:</string>
     <string name="item">Item:</string>
-    <string name="instructions">If you would like to edit item information, please insert below: </string>
+    <string name="instructions">Tap the fields to edit item information, or tap the buttons to increment/decrement
+                                item quantity.</string>
     <string name="current_info">Current Item Information:</string>
     <string name="exit">Exit</string>
     <string name="save_and_exit">Save and Exit</string>
     <string name="delete_item">Delete Item</string>
+    <string name="content_description2">Increment and decrement buttons</string>
 
 </resources>

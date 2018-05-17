@@ -20,6 +20,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.FileNotFoundException;
 
+//This class accesses the photo gallery and uploads an image to the image reader, which reads the text and saves it as a string
 public class Camera extends AppCompatActivity {
     private ImageView preview;
     public Boolean addorsub;

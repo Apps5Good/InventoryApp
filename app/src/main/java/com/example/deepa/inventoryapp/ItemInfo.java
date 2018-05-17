@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
+//This class allows the user to modify item information manually
 public class ItemInfo extends AppCompatActivity {
 
     EditText editName;
     EditText editQuantity;
     Button saveAndExit;
     Button delete;
+    ImageButton inc;
+    ImageButton dec;
     int id;
 
 
@@ -30,6 +34,8 @@ public class ItemInfo extends AppCompatActivity {
         editQuantity = findViewById(R.id.editQuantity);
         saveAndExit = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
+        inc = findViewById(R.id.increment);
+        dec = findViewById(R.id.decrement);
 
         //this bundle contains the specific item id, which is important when updating item information
         Bundle bundle = getIntent().getExtras();
@@ -69,6 +75,19 @@ public class ItemInfo extends AppCompatActivity {
             }
         });
 
+        inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment();
+            }
+        });
+
+        dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                decrement();
+            }
+        });
     }
 
     /**
@@ -127,12 +146,20 @@ public class ItemInfo extends AppCompatActivity {
         startActivity(intentInventory);
     }
 
-    private boolean isThere(AppDatabase db, Item i) {
-        for(Item dbItem : db.userDao().getAllItems()) {
-            if(dbItem.getItemName().toLowerCase().equals(i.getItemName().toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
+     /**
+     * increments item quantity by 1
+     */
+    public void increment() {
+        int amount = Integer.parseInt(String.valueOf(editQuantity.getText())) + 1;
+        editQuantity.setText(String.valueOf(amount));
+    }
+
+    /**
+     * decreases item quantity by 1 if the quantity does not already equal zero
+     */
+    public void decrement() {
+        int amount = Integer.parseInt(String.valueOf(editQuantity.getText())) - 1;
+        if(amount > -1)
+            editQuantity.setText(String.valueOf(amount));
     }
 }

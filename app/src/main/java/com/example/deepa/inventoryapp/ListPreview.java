@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*this class displays a preview of the image reader's text and allows the user to make changes to item names before
+adding the list to the inventory*/
 public class ListPreview extends AppCompatActivity {
     Button save;
     String[] itemList;

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+//this class allows the user to manually create an item with a name and quantity
 public class CreateItem extends AppCompatActivity {
 
     EditText name;

@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+//This class is the home page and gives the user options to add or remove items, as well as view the inventory
 public class MainActivity extends AppCompatActivity {
-
+    Boolean status;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v instance of a View object
      */
      public void addItems(View v) {
-        Boolean status = true; //if true, it will add; if false, it will subtract
+        status = true; //if true, it will add; if false, it will subtract
         Intent intentAdd = new Intent (this, Camera.class);
         intentAdd.putExtra("status", status);
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v instance of a View object
      */
     public void subtractItems(View v) {
-        Boolean status = false;
+        status = false;
         Intent intentSubtract = new Intent(this, Camera.class);
         intentSubtract.putExtra("status", status);
 

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//This class displays the inventory in a listView format and gives the user a variety of options to add or remove items
 public class InventoryDisplay extends AppCompatActivity {
 
     List<Item> items;
