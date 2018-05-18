@@ -28,13 +28,12 @@
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="@string/item"
         android:textSize="24sp"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/quantity"
-        app:layout_constraintEnd_toStartOf="@+id/editName"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -55,20 +54,17 @@
 
     <EditText
         android:id="@+id/editName"
-        android:layout_width="239dp"
-        android:layout_height="44dp"
+        android:layout_width="238dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="404dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginLeft="116dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
