@@ -43,7 +43,8 @@ public class Camera extends AppCompatActivity {
 
         //this boolean represents whether we are adding items or removing items from inventory
         Bundle addOrSubtract = getIntent().getExtras();
-        addorsub = addOrSubtract.getBoolean("status");
+        if(addOrSubtract != null)
+            addorsub = addOrSubtract.getBoolean("status");
 
         //code taken from https://stackoverflow.com/questions/38352148/get-image-from-the-gallery-and-show-in-imageview
         cameraButton.setOnClickListener(new View.OnClickListener() {

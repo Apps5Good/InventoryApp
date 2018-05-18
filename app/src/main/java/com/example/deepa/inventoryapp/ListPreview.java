@@ -23,8 +23,10 @@ public class ListPreview extends AppCompatActivity {
         setContentView(R.layout.activity_list_preview);
 
         Bundle bundle = getIntent().getExtras();
-        add = bundle.getBoolean("status");
-        receipt = bundle.getString("receipt");
+        if(bundle != null) {
+            add = bundle.getBoolean("status");
+            receipt = bundle.getString("receipt");
+        }
         userField = findViewById(R.id.items);
         userField.setText(receipt);
 
@@ -104,8 +106,10 @@ public class ListPreview extends AppCompatActivity {
                 }
             }
             if (!isThere) {
-
+                continue;
             }
+
+
         }
     }
 
